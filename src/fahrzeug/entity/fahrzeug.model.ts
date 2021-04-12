@@ -26,7 +26,7 @@ if (logColorConsole) {
  */
 export class FahrzeugDocument extends Document<string> implements Fahrzeug {
     readonly modell: string | null | undefined;
-
+    
     readonly türen: number | null | undefined;
 
     readonly art: FahrzeugArt | '' | null | undefined;
