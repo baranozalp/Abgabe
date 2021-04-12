@@ -1,0 +1,65 @@
+@startuml Anwendungskern
+
+!pragma useNewPackage
+skinparam classAttributeIconSize 0
+skinparam componentStyle uml2
+
+package mongoose {
+  class Schema
+
+  class "model()" as model
+  hide model circle
+}
+
+package fahrzeug.entity {
+    class "validateFahrzeug()" as validateFahrzeug
+    hide validateFahrzeug circle
+
+    class FahrzeugModel
+    hide FahrzeugModel circle
+
+    FahrzeugModel ..> Schema
+    FahrzeugModel ..> model
+    FahrzeugModel ..> validateFahrzeug
+
+    FahrzeugData ..> FahrzeugArt
+    FahrzeugData ..> Hersteller
+
+    enum FahrzeugArt {
+        Coupe
+        Kombi
+        Cabrio
+        SUV
+        Limousine
+    }
+
+    enum Hersteller {
+        BMW
+        Audi
+        Mercedes-Benz
+        Volkswagen
+        Porsche
+    }
+
+    interface FahrzeugData <<entity>> {
+        + _id?: string
+        + __v?: number
+        + createdAt?: number
+        + updatedAt?: number
+        + modell: string
+        + türen?: number
+        + art?: FahrzeugArt
+        + hersteller: Hersteller
+        + preis: number
+        + rabatt?: number
+        + lieferbar?: boolean
+        + datum?: Date
+        + fahrgestellnummer: string
+        + angebot?: string
+        + sonderausstattung?: Array<string>
+    }
+}
+
+hide empty members
+
+@enduml
