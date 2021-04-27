@@ -78,5 +78,5 @@ spec:
         - name: log-fahrzeug
           # https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
           hostPath:
-            path: /run/desktop/mnt/host/c/Zimmermann/volumes/fahrzeug
+            path: /run/desktop/mnt/host/c/Zimmermann/volumes/buch
             type: Directory
