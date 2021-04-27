@@ -279,7 +279,7 @@ https://github.com/prisma-labs/graphql-playground#settings beschrieben.
 #### Playground bei Heroku
 
 Wenn man den Playground bei Heroku (s.u.) mit z.B.
-`https://gener-iert-12345.herokuapp.com/graphql` verwenden möchte, dann muss man
+`https://brutale-blechbuechsen.herokuapp.com/graphql` verwenden möchte, dann muss man
 bei Heroku die Umgebungsvariable `NODE_ENV` auf `development` setzen. Dadurch
 werden aber bei Deployment die _devDependencies_ _NICHT_ entfernt, was zu einem
 deutlich größeren Softwarepaket bei Deployment führt.
@@ -604,7 +604,7 @@ so dass man die URL mit `<Strg>v` kopieren bzw. sichern kann. Die URL sieht
 im Prinzip so aus:
 
 ```text
-    mongodb+srv://admin:p@cluster0.wsfu5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+    mongodb+srv://admin:p@cluster0.j8ube.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 ```
 
 _CAVEAT_: Das eigene Passwort wird aus Sicherheitsgründen nicht angezeigt,
@@ -622,7 +622,7 @@ erstellt man in einer Powershell mit der Mongo CLI eine eigene DB (z.B. `acme`)
 mit einer leeren Collection (z.B. `Fahrzeug`):
 
 ```text
-    mongo "mongodb+srv://admin:p@cluster0.wsfu5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    mongodb+srv://admin:p@cluster0.j8ube.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
         use acme
         db.createCollection('Fahrzeug')
         exit
@@ -725,31 +725,31 @@ In der Kommandopalette durch `<F1>` gibt man `heroku create` ein.
 Die Ausgabe im Powershell-Terminal sieht dann prinzipiell folgendermaßen aus:
 
 ```text
-https://pure-falls-97676.herokuapp.com/ | https://git.heroku.com/pure-falls-97676.git
+http://brutale-blechbuechsen.herokuapp.com/ | https://git.heroku.com/brutale-blechbuechsen.git
 ```
 
 Jetzt gibt es also eine generierte Domain für die eigene Anwendung, die künftig
-über z.B. https://pure-falls-97676.herokuapp.com/ erreichbar sein wird.
+über z.B. http://brutale-blechbuechsen.herokuapp.com/ erreichbar sein wird.
 
 Die ausgegebene URL nimmt man, um in _package.json_ innerhalb von `"scripts": {`
-die dortige URL `https://pure-falls-97676.herokuapp.com/` bei den Skripten
+die dortige URL `http://brutale-blechbuechsen.herokuapp.com/` bei den Skripten
 `curl:heroku` und `open:heroku` zu überschreiben.
 
 ### Umgebungsvariable für Heroku
 
 Mit der Kommandopalette durch `<F1>` gibt man `heroku config:set` und
-anschließend prinzipiell `DB_HOST=cluster0.wsfu5.mongodb.net`, wobei die ?
+anschließend prinzipiell `DB_HOST=cluster0.j8ube.mongodb.net`, wobei die ?
 gemäß der obigen Atlas-Konfiguration ersetzt werden müssen. Dabei kann man im
 Powershell-Terminal die Interaktion mit Heroku verfolgen.
 
 Das wiederholt man dann noch für die Umgebungsvariable mit den passenden
 Werten für Benutzername und Passwort aus der Atlas-Konfiguration:
 
-- DB_USER=admin
-- DB_PASS=p
-- LOG_DIR=/tmp
-- APOLLO_PLAYGROUND=true
-- DB_POPULATE=true
+- heroku config:set DB_USER=admin
+- heroku config:set DB_PASS=p
+- heroku config:set LOG_DIR=/tmp
+- heroku config:set APOLLO_PLAYGROUND=true
+- heroku config:set DB_POPULATE=true
 
 ### Deployment für Heroku
 
@@ -803,7 +803,7 @@ https://devcenter.heroku.com/articles/free-dyno-hours.
 Nach dem Deployment ist die eigene Anwendung verfügbar und kann benutzt
 werden. Beispielsweise kann man in einer eigenen Powershell das Kommando
 `npm run curl:heroku` aufrufen. Dabei wird mit `curl` auf die URL
-`https://pure-falls-97676.herokuapp.com/fahrzeuge/00000000-0000-0000-0000-000000000001`
+`https://brutale-blechbuechsen.herokuapp.com/fahrzeuge/00000000-0000-0000-0000-000000000001`
 zugegriffen.
 
 Alternativ kann man auch `npm run open:heroku` oder `npm run open:heroku:file`
@@ -813,7 +813,7 @@ Webbrowser angezeigt.
 ### Heroku-Console
 
 Mit der Kommandopalette durch `<F1>` kann man
-`heroku logs --tail --app pure-falls-97676` eingeben und die Logging-Ausgaben
+`heroku logs --tail --app brutale-blechbuechsen` eingeben und die Logging-Ausgaben
 auf der Heroku-Console mitverfolgen, ähnlich wie bei Linux mit `tail -f`.
 
 ### Dashboard für die Verwaltung der eigenen Heroku-Anwendung(en)
@@ -829,9 +829,9 @@ Anwendung ggf. löschen.
 
 Mit `heroku run ...` kann man ein einzelnes Kommando als REPL
 (= Read-eval-print loop) laufen lassen. So zeigt z.B. das Kommando
-`heroku run --app gener-iert-12345 node --version` an, welche Node-Version für
+`heroku run --app brutale-blechbuechsen node --version` an, welche Node-Version für
 die Heroku-Anwendung verwendet wird.
-Oder mit `heroku run  --app gener-iert-12345 printenv` kann man sich die
+Oder mit `heroku run  --app brutale-blechbuechsen printenv` kann man sich die
 Umgebungsvariable für die Heroku-Anwendung anzeigen lassen.
 
 Mit `heroku addons` kann man sich zusätzlich installierte Add-ons anzeigen

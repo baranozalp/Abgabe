@@ -3,7 +3,7 @@
 ###
 
 @url = https://localhost:3000/graphql
-#@url = https://gener-iert-12345.herokuapp.com/graphql
+#@url = https://brutale-blechbuechsen.herokuapp.com/graphql
 
 ### Suche id, modell, art und version von allen Fahrzeugen
 POST {{url}}

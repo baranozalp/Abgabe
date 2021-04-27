@@ -3,7 +3,7 @@
 ###
 
 #@url = https://localhost:3000/graphql
-@url = https://pure-falls-97676.herokuapp.com/graphql
+@url = https://brutale-blechbuechsen.herokuapp.com/graphql
 
 ### Neues Fahrzeug anlegen
 POST {{url}}
@@ -12,15 +12,15 @@ X-REQUEST-TYPE: GraphQL
 
 mutation {
   createFahrzeug(
-    modell: "R8",
+    modell: "R",
     tueren: 2,
     art: "Cabrio",
     hersteller: "Audi",
-    preis: 210000.00,
+    preis: 210000.3,
     rabatt: 0.02,
     lieferbar: true,
     datum: "2021-02-15",
-    fahrgestellnummer: "3-22722-583-2",
+    fahrgestellnummer: "3-22133222-583-2",
     angebot: "https://acmfe.at/",
     sonderausstattung: ["Sportfahrwerk"],
   )

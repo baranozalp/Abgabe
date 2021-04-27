@@ -3,7 +3,7 @@
 ###
 
 @host = localhost:3000/api
-#@host = gener-iert-12345.herokuapp.com/api
+#@host = brutale-blechbuechsen.herokuapp.com/api
 
 ### Login
 # @name login

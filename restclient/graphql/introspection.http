@@ -3,7 +3,7 @@
 ###
 
 @url = https://localhost:3000/graphql
-#@url = https://gener-iert-12345.herokuapp.com/graphql
+#@url = https://brutale-blechbuechsen.herokuapp.com/graphql
 
 # Introspection beim Apollo Server: Metadaten ueber die verfuegbaren Typen
 # https://graphql.org/learn/introspection

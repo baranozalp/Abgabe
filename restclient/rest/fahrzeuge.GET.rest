@@ -3,7 +3,7 @@
 ###
 
 @host = localhost:3000/api/fahrzeuge
-#@host = gener-iert-12345.herokuapp.com/api/fahrzeuge
+#@host = brutale-blechbuechsen.herokuapp.com/api/fahrzeuge
 
 ### Suche alle Fahrzeuge
 https://{{host}}

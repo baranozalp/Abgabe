@@ -3,7 +3,7 @@
 ###
 
 @host = localhost:3000/html
-#@host = gener-iert-12345.herokuapp.com/api/fahrzeuge
+#@host = brutale-blechbuechsen.herokuapp.com/api/fahrzeuge
 
 ### Homepage
 https://{{host}}
