@@ -1,0 +1,44 @@
+@startuml Anwendungskern
+
+!pragma useNewPackage
+skinparam classAttributeIconSize 0
+skinparam componentStyle uml2
+
+interface Promise<T>
+
+package shared {
+  class "sendMail()" as sendMail
+  hide sendMail circle
+}
+
+package fahrzeug {
+  package entity {
+    class FahrzeugModel
+    hide FahrzeugModel circle
+
+    class "validateFahrzeug()" as validateFahrzeug
+    hide validateFahrzeug circle
+
+    interface FahrzeugData <<entity>>
+  }
+
+  package service #DDDDDD {
+    FahrzeugService ..> Promise
+    FahrzeugService ..> FahrzeugModel
+    FahrzeugService ..> FahrzeugData
+    FahrzeugService ..> validateFahrzeug
+    FahrzeugService ..> sendMail
+
+    class FahrzeugService << control >> {
+      + async findById(id: string): Promise<FahrzeugData | undefined>
+      + async find(query?: any): Promise<Array<FahrzeugData>>
+      + async create(fahrzeug: FahrzeugData): Promise<FahrzeugData>
+      + async update(fahrzeug: FahrzeugData, version: string): Promise<FahrzeugData>
+      + async delete(id: string): Promise<boolean>
+    }
+  }
+}
+
+hide empty members
+
+@enduml

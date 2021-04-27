@@ -1,0 +1,75 @@
+@startuml Handler-Funktionen und Handler-Klasse
+
+!pragma useNewPackage
+skinparam classAttributeIconSize 0
+skinparam componentStyle uml2
+
+interface Promise<T>
+
+package express {
+  package core {
+    interface Express
+  }
+
+  class "express()" as express
+  hide express circle
+
+  interface Request
+  interface Response
+}
+
+class App <<boudary>> {
+  + readonly app: Express
+}
+App ..> Express
+App ..> express
+
+package fahrzeug {
+  package entity {
+    interface FahrzeugData <<entity>> {
+    }
+  }
+
+  package service {
+    class FahrzeugService << control >> {
+    }
+  }
+
+  package rest #DDDDDD {
+    "Handler Functions" .right.> Request
+    "Handler Functions" ..> Response
+    "Handler Functions" ..> Promise
+    "Handler Functions" ..> FahrzeugHandler
+
+    FahrzeugHandler o--> "1" FahrzeugService : service
+    FahrzeugHandler .right.> Request
+    FahrzeugHandler ..> Response
+    FahrzeugHandler ..> FahrzeugData
+    FahrzeugHandler ..> Promise
+
+    class "Handler Functions" << boundary >> {
+      + async findById(req: Request, res: Response): Promise<void>
+      + async find(req: Request, res: Response): Promise<void>
+      + async create(req: Request, res: Response): Promise<void>
+      + async update(req: Request, res: Response): Promise<void>
+      + async deleteFn(req: Request, res: Response): Promise<void>
+    }
+    hide "Handler Functions" << boundary >> circle
+
+    class FahrzeugHandler << control >> {
+      + async findById(req: Request, res: Response): Promise<void>
+      + async find(req: Request, res: Response): Promise<void>
+      + async create(req: Request, res: Response): Promise<void>
+      + async update(req: Request, res: Response): Promise<void>
+      + async delete(req: Request, res: Response): Promise<void>
+    }
+  }
+}
+
+App ..> "Handler Functions"
+
+hide empty members
+
+footer (c) Baran Özalp
+
+@enduml

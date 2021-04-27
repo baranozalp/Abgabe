@@ -1,0 +1,21 @@
+@startuml Use Cases
+
+left to right direction
+skinparam packageStyle rect
+skinparam componentStyle uml2
+
+actor Gast
+actor Admin
+
+rectangle kunde {
+    Gast --> (Fahrzeug suchen)
+    Gast --> (Datei herunterladen)
+    Admin --> (Fahrzeug suchen)
+    Admin --> (Fahrzeug anlegen)
+    Admin --> (Fahrzeug ändern)
+    Admin --> (Fahrzeug löschen)
+    Admin --> (Datei hochladen)
+    Admin --> (Datei herunterladen)
+}
+
+@enduml

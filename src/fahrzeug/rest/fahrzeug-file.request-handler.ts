@@ -62,7 +62,10 @@ export class FahrzeugFileRequestHandler {
 
         req.on('data', (chunk: Uint8Array) => {
             const { length } = chunk;
-            logger.debug('FahrzeugFileRequestHandler.upload(): data %d', length);
+            logger.debug(
+                'FahrzeugFileRequestHandler.upload(): data %d',
+                length,
+            );
             data.push(chunk);
             totalBytesInBuffer += length;
         })
@@ -138,7 +141,7 @@ export class FahrzeugFileRequestHandler {
     }
 
     private handleDownloadError(
-        err: FahrzeugNotExists | DownloadError,
+        err: DownloadError | FahrzeugNotExists,
         res: Response,
     ) {
         if (err instanceof FahrzeugNotExists) {

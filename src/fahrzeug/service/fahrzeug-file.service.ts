@@ -94,7 +94,10 @@ export class FahrzeugFileService {
     }
 
     private async deleteFiles(filename: string, bucket: GridFSBucket) {
-        logger.debug('FahrzeugFileService.deleteFiles(): filename=%s', filename);
+        logger.debug(
+            'FahrzeugFileService.deleteFiles(): filename=%s',
+            filename,
+        );
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/naming-convention
         const idObjects: { _id: ObjectId }[] = await bucket
             .find({ filename })
@@ -113,7 +116,10 @@ export class FahrzeugFileService {
     }
 
     private async checkFilename(filename: string) {
-        logger.debug('FahrzeugFileService.checkFilename(): filename=%s', filename);
+        logger.debug(
+            'FahrzeugFileService.checkFilename(): filename=%s',
+            filename,
+        );
 
         // Gibt es ein Fahrzeug mit dem gegebenen "filename" als ID?
         // eslint-disable-next-line line-comment-position, spaced-comment
@@ -128,7 +134,10 @@ export class FahrzeugFileService {
             return result;
         }
 
-        logger.debug('FahrzeugFileService.checkFilename(): fahrzeug=%o', fahrzeug);
+        logger.debug(
+            'FahrzeugFileService.checkFilename(): fahrzeug=%o',
+            fahrzeug,
+        );
 
         return undefined;
     }

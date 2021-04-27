@@ -4,16 +4,17 @@
  * @packageDocumentation
  */
 
-import type { Fahrzeug, FahrzeugData } from '../entity';
+/* eslint-disable max-lines */
 import {
+    FahrgestellnummerExists,
     FahrzeugInvalid,
     FahrzeugNotExists,
     FahrzeugServiceError,
-    FahrgestellnummerExists,
     ModellExists,
     VersionInvalid,
     VersionOutdated,
 } from './errors';
+import type { Fahrzeug, FahrzeugData } from '../entity';
 import { FahrzeugModel, validateFahrzeug } from '../entity';
 import { cloud, logger, mailConfig } from '../../shared';
 import type { QueryOptions } from 'mongoose';
@@ -57,7 +58,9 @@ export class FahrzeugService {
         // Das Resultat ist null, falls nicht gefunden.
         // lean() liefert ein "Plain JavaScript Object" statt ein Mongoose Document,
         // so dass u.a. der virtuelle getter "id" auch nicht mehr vorhanden ist.
-        const fahrzeug = await FahrzeugModel.findById(id).lean<FahrzeugData | null>();
+        const fahrzeug = await FahrzeugModel.findById(
+            id,
+        ).lean<FahrzeugData | null>();
         logger.debug('FahrzeugService.findById(): fahrzeug=%o', fahrzeug);
 
         if (fahrzeug === null) {
@@ -79,7 +82,7 @@ export class FahrzeugService {
 
         // alle Fahrzeuge asynchron suchen u. aufsteigend nach modell sortieren
         // https://docs.mongodb.org/manual/reference/object-id
-        // entries(): { modell: 'a', tueren: 5 } => [{ modell: 'x'}, {tueren: 5}]
+        // entries(): { modell: 'a', türen: 5 } => [{ modell: 'x'}, {türen: 5}]
         if (query === undefined || Object.entries(query).length === 0) {
             logger.debug('FahrzeugService.find(): alle Fahrzeuge');
             // lean() liefert ein "Plain JavaScript Object" statt ein Mongoose Document
@@ -92,9 +95,9 @@ export class FahrzeugService {
             return fahrzeuge;
         }
 
-        // { modell: 'a', tueren: 5, javascript: true }
+        // { modell: 'a', türen: 5, javascript: true }
         // Rest Properties
-        const { modell, javascript, typescript, ...dbQuery } = query;
+        const { modell, schiebedach, sitzheizung, ...dbQuery } = query;
 
         // Fahrzeuge zur Query (= JSON-Objekt durch Express) asynchron suchen
         // Modell in der Query: Teilstring des Modells,
@@ -110,11 +113,11 @@ export class FahrzeugService {
 
         // z.B. {javascript: true, typescript: true}
         const sonderausstattung = [];
-        if (javascript === 'true') {
-            sonderausstattung.push('JAVASCRIPT');
+        if (schiebedach === 'true') {
+            sonderausstattung.push('Schiebedach');
         }
-        if (typescript === 'true') {
-            sonderausstattung.push('TYPESCRIPT');
+        if (sitzheizung === 'true') {
+            sonderausstattung.push('Sitzheizung');
         }
         if (sonderausstattung.length === 0) {
             delete dbQuery.sonderausstattung;
@@ -129,7 +132,9 @@ export class FahrzeugService {
         // FahrzeugModel.findOne(query), falls das Suchkriterium eindeutig ist
         // bei findOne(query) wird null zurueckgeliefert, falls nichts gefunden
         // lean() liefert ein "Plain JavaScript Object" statt ein Mongoose Document
-        const fahrzeuge = await FahrzeugModel.find(dbQuery).lean<FahrzeugData[]>();
+        const fahrzeuge = await FahrzeugModel.find(dbQuery).lean<
+            FahrzeugData[]
+        >();
         for await (const fahrzeug of fahrzeuge) {
             this.deleteTimestamps(fahrzeug);
         }
@@ -143,11 +148,13 @@ export class FahrzeugService {
      * @returns Die ID des neu angelegten Fahrzeuges oder im Fehlerfall
      * - {@linkcode FahrzeugInvalid} falls die Fahrzeugdaten gegen Constraints verstoßen
      * - {@linkcode FahrgestellnummerExists} falls die FAHRGESTELLNUMMER-Nr bereits existiert
-     * - {@linkcode ModellExists} falls der Modell bereits existiert
+     * - {@linkcode ModellExists} falls das Modell bereits existiert
      */
     async create(
         fahrzeug: Fahrzeug,
-    ): Promise<FahrzeugInvalid | FahrgestellnummerExists | ModellExists | string> {
+    ): Promise<
+        FahrgestellnummerExists | FahrzeugInvalid | ModellExists | string
+    > {
         logger.debug('FahrzeugService.create(): fahrzeug=%o', fahrzeug);
         const validateResult = await this.validateCreate(fahrzeug);
         if (validateResult instanceof FahrzeugServiceError) {
@@ -172,7 +179,7 @@ export class FahrzeugService {
      *  oder im Fehlerfall
      *  - {@linkcode FahrzeugInvalid}, falls Constraints verletzt sind
      *  - {@linkcode FahrzeugNotExists}, falls das Fahrzeug nicht existiert
-     *  - {@linkcode ModellExists}, falls der Modell bereits existiert
+     *  - {@linkcode ModellExists}, falls das Modell bereits existiert
      *  - {@linkcode VersionInvalid}, falls die Versionsnummer ungültig ist
      *  - {@linkcode VersionOutdated}, falls die Versionsnummer nicht aktuell ist
      */
@@ -356,7 +363,10 @@ export class FahrzeugService {
         const { modell } = fahrzeug;
 
         // Pattern "Active Record" (urspruengl. von Ruby-on-Rails)
-        const result = await FahrzeugModel.findOne({ modell }, { _id: true }).lean();
+        const result = await FahrzeugModel.findOne(
+            { modell },
+            { _id: true },
+        ).lean();
         if (result !== null) {
             const id = result._id;
             logger.debug('FahrzeugService.checkModellExists(): _id=%s', id);
@@ -368,7 +378,9 @@ export class FahrzeugService {
     }
 
     private async checkIdAndVersion(id: string, version: number) {
-        const fahrzeugDb: FahrzeugData | null = await FahrzeugModel.findById(id).lean();
+        const fahrzeugDb: FahrzeugData | null = await FahrzeugModel.findById(
+            id,
+        ).lean();
         if (fahrzeugDb === null) {
             const result = new FahrzeugNotExists(id);
             logger.debug(

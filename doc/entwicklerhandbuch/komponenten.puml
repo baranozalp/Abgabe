@@ -1,0 +1,67 @@
+@startuml Komponenten
+
+skinparam componentStyle uml2
+
+left to right direction
+
+actor RESTClient
+
+node "Funktionen mit Express" {
+  boundary Router
+  [Handler Functions]
+}
+
+node "Klassen / objektorientiert" {
+  [FahrzeugHandler]
+  [FahrzeugFileHandler]
+
+  [FahrzeugService]
+  [FahrzeugFileService]
+}
+
+[sendMail()] as sendMail
+
+entity FahrzeugModel
+
+cloud {
+    [Mongoose]
+}
+
+cloud {
+    [MongDB\nNative Driver]
+}
+
+cloud {
+    [nodemailer]
+}
+
+database "acme (MongoDB)" {
+    [Collection Fahrzeug]
+    [GridFS]
+}
+
+node {
+    [Mailserver]
+}
+
+
+RESTClient ~~> [Router]
+[Router] ..> [Handler Functions]
+[Handler Functions] ..> [FahrzeugHandler]
+[Handler Functions] ..> [FahrzeugFileHandler]
+
+[FahrzeugHandler] --> [FahrzeugService]
+[FahrzeugFileHandler] --> [FahrzeugFileService]
+[FahrzeugService] ..> [FahrzeugModel]
+[FahrzeugFileService] ..> [FahrzeugModel]
+
+[FahrzeugModel] ~~> [Mongoose]
+[FahrzeugFileService] ~~> [MongDB\nNative Driver]
+[sendMail] ~~> [nodemailer]
+[Mongoose] ~~> [Collection Fahrzeug]
+[MongDB\nNative Driver] ~~> [GridFS]
+
+[FahrzeugService] --> [sendMail]
+[nodemailer] ~~> [Mailserver]
+
+@enduml

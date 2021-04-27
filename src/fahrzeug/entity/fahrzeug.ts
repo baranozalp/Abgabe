@@ -9,12 +9,17 @@
 /**
  * Alias-Typ für gültige Strings bei Herstellern.
  */
-export type Hersteller = 'BMW' | 'Audi' | 'MercedesBenz' | 'Volkswagen' | 'Porsche';
+export type Hersteller =
+    | 'Audi'
+    | 'BMW'
+    | 'MercedesBenz'
+    | 'Porsche'
+    | 'Volkswagen';
 
 /**
  * Alias-Typ für gültige Strings bei der Fahrzeugart.
  */
-export type FahrzeugArt = 'Coupe' | 'Kombi' | 'Cabrio' | 'SUV' | 'Limousine';
+export type FahrzeugArt = 'Cabrio' | 'Coupe' | 'Kombi' | 'Limousine' | 'SUV';
 
 // export type Getriebe = 'Schaltgetriebe' | 'Automatik';
 
@@ -36,7 +41,7 @@ export interface Fahrzeug {
     readonly preis: number | undefined;
     readonly rabatt: number | undefined;
     readonly lieferbar: boolean | undefined;
-    
+
     // Falls wir Lust haben mehr zu machen
     // readonly baujahr: Date | undefined;
     // readonly kmstand: number | null | undefined;

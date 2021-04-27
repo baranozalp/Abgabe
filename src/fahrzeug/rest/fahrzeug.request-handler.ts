@@ -4,19 +4,19 @@
  * gebündelt bereitzustellen.
  * @packageDocumentation
  */
-
-import type { Fahrzeug, FahrzeugData, ValidationErrorMsg } from '../entity';
+/* eslint-disable max-lines */
+import type { CreateError, UpdateError } from '../service';
 import {
+    FahrgestellnummerExists,
     FahrzeugInvalid,
     FahrzeugNotExists,
     FahrzeugService,
     FahrzeugServiceError,
-    FahrgestellnummerExists,
     ModellExists,
     VersionInvalid,
     VersionOutdated,
 } from '../service';
-import type { CreateError, UpdateError } from '../service';
+import type { Fahrzeug, FahrzeugData, ValidationErrorMsg } from '../entity';
 import { HttpStatus, getBaseUri, logger, mimeConfig } from '../../shared';
 import type { Request, Response } from 'express';
 
@@ -94,7 +94,10 @@ export class FahrzeugRequestHandler {
             res.sendStatus(HttpStatus.NOT_FOUND);
             return;
         }
-        logger.debug('FahrzeugRequestHandler.findById(): fahrzeug=%o', fahrzeug);
+        logger.debug(
+            'FahrzeugRequestHandler.findById(): fahrzeug=%o',
+            fahrzeug,
+        );
 
         // ETags
         const versionDb = fahrzeug.__v;
@@ -102,7 +105,10 @@ export class FahrzeugRequestHandler {
             res.sendStatus(HttpStatus.NOT_MODIFIED);
             return;
         }
-        logger.debug('FahrzeugRequestHandler.findById(): VersionDb=%d', versionDb);
+        logger.debug(
+            'FahrzeugRequestHandler.findById(): VersionDb=%d',
+            versionDb,
+        );
         res.header('ETag', `"${versionDb}"`);
 
         // HATEOAS mit Atom Links und HAL (= Hypertext Application Language)
@@ -157,7 +163,9 @@ export class FahrzeugRequestHandler {
             // HATEOAS: Atom Links je Fahrzeug
             const fahrzeugHAL: FahrzeugHAL = fahrzeug;
             // eslint-disable-next-line no-underscore-dangle
-            fahrzeugHAL._links = { self: { href: `${baseUri}/${fahrzeug._id}` } };
+            fahrzeugHAL._links = {
+                self: { href: `${baseUri}/${fahrzeug._id}` },
+            };
 
             delete fahrzeug._id;
             delete fahrzeug.__v;
@@ -176,7 +184,7 @@ export class FahrzeugRequestHandler {
      * dass damit das neu angelegte Fahrzeug abgerufen werden kann.
      *
      * Falls Constraints verletzt sind, wird der Statuscode `400` (`Bad Request`)
-     * gesetzt und genauso auch wenn das Modell oder die Fahrgestellnummer bereits
+     * gesetzt und genauso auch wenn der modell oder die ISBN-Nummer bereits
      * existieren.
      *
      * @param req Request-Objekt von Express.
@@ -189,7 +197,9 @@ export class FahrzeugRequestHandler {
             // Optional Chaining
             contentType?.toLowerCase() !== mimeConfig.json
         ) {
-            logger.debug('FahrzeugRequestHandler.create() status=NOT_ACCEPTABLE');
+            logger.debug(
+                'FahrzeugRequestHandler.create() status=NOT_ACCEPTABLE',
+            );
             res.sendStatus(HttpStatus.NOT_ACCEPTABLE);
             return;
         }
@@ -224,8 +234,8 @@ export class FahrzeugRequestHandler {
      * Falls die Versionsnummer fehlt, wird der Statuscode `428` (`Precondition
      * required`) gesetzt; und falls sie nicht korrekt ist, der Statuscode `412`
      * (`Precondition failed`). Falls Constraints verletzt sind, wird der
-     * Statuscode `400` (`Bad Request`) gesetzt und genauso auch wenn das neue
-     * Modell oder die neue Fahrgestellnummer bereits existieren.
+     * Statuscode `400` (`Bad Request`) gesetzt und genauso auch wenn der neue
+     * Modell oder die neue ISBN-Nummer bereits existieren.
      *
      * @param req Request-Objekt von Express.
      * @param res Leeres Response-Objekt von Express.
@@ -319,7 +329,11 @@ export class FahrzeugRequestHandler {
         }
 
         if (err instanceof FahrgestellnummerExists) {
-            this.handleFahrgestellnummerExists(err.fahrgestellnummer, err.id, res);
+            this.handleFahrgestellnummerExists(
+                err.fahrgestellnummer,
+                err.id,
+                res,
+            );
         }
     }
 
@@ -328,15 +342,21 @@ export class FahrzeugRequestHandler {
         id: string | undefined,
         res: Response,
     ) {
-        const msg = `Die Fahrgestellnummer "${fahrgestellnummer}" existiert bereits bei ${id}.`;
-        logger.debug('FahrzeugRequestHandler.handleFahrgestellnummerExists(): msg=%s', msg);
+        const msg = `Die ISBN-Nummer "${fahrgestellnummer}" existiert bereits bei ${id}.`;
+        logger.debug(
+            'FahrzeugRequestHandler.handleFahrgestellnummerExists(): msg=%s',
+            msg,
+        );
         res.status(HttpStatus.BAD_REQUEST)
             .set('Content-Type', 'text/plain')
             .send(msg);
     }
 
     private handleValidationError(msg: ValidationErrorMsg, res: Response) {
-        logger.debug('FahrzeugRequestHandler.handleValidationError(): msg=%o', msg);
+        logger.debug(
+            'FahrzeugRequestHandler.handleValidationError(): msg=%o',
+            msg,
+        );
         res.status(HttpStatus.BAD_REQUEST).send(msg);
     }
 
@@ -346,7 +366,10 @@ export class FahrzeugRequestHandler {
         res: Response,
     ) {
         const msg = `Der Modell "${modell}" existiert bereits bei ${id}.`;
-        logger.debug('FahrzeugRequestHandler.handleModellExists(): msg=%s', msg);
+        logger.debug(
+            'FahrzeugRequestHandler.handleModellExists(): msg=%s',
+            msg,
+        );
         res.status(HttpStatus.BAD_REQUEST)
             .set('Content-Type', 'text/plain')
             .send(msg);
@@ -403,7 +426,10 @@ export class FahrzeugRequestHandler {
         if (err instanceof FahrzeugNotExists) {
             const { id } = err;
             const msg = `Es gibt kein Fahrzeug mit der ID "${id}".`;
-            logger.debug('FahrzeugRequestHandler.handleUpdateError(): msg=%s', msg);
+            logger.debug(
+                'FahrzeugRequestHandler.handleUpdateError(): msg=%s',
+                msg,
+            );
             res.status(HttpStatus.PRECONDITION_FAILED)
                 .set('Content-Type', 'text/plain')
                 .send(msg);
@@ -418,7 +444,10 @@ export class FahrzeugRequestHandler {
         if (err instanceof VersionInvalid) {
             const { version } = err;
             const msg = `Die Versionsnummer "${version}" ist ungueltig.`;
-            logger.debug('FahrzeugRequestHandler.handleUpdateError(): msg=%s', msg);
+            logger.debug(
+                'FahrzeugRequestHandler.handleUpdateError(): msg=%s',
+                msg,
+            );
             res.status(HttpStatus.PRECONDITION_REQUIRED)
                 .set('Content-Type', 'text/plain')
                 .send(msg);
@@ -428,7 +457,10 @@ export class FahrzeugRequestHandler {
         if (err instanceof VersionOutdated) {
             const { version } = err;
             const msg = `Die Versionsnummer "${version}" ist nicht aktuell.`;
-            logger.debug('FahrzeugRequestHandler.handleUpdateError(): msg=%s', msg);
+            logger.debug(
+                'FahrzeugRequestHandler.handleUpdateError(): msg=%s',
+                msg,
+            );
             res.status(HttpStatus.PRECONDITION_FAILED)
                 .set('Content-Type', 'text/plain')
                 .send(msg);

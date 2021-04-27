@@ -380,7 +380,7 @@ rules:
   key-spacing: error
   keyword-spacing: error
   line-comment-position: error
-  linebreak-style: error
+  # linebreak-style: error
   max-classes-per-file: error
   max-depth: error
   max-len:
@@ -492,9 +492,9 @@ rules:
   no-whitespace-before-property: error
   no-with: error
   nonblock-statement-body-position: error
-  object-curly-newline:
-    - error
-    - multiline: true
+  #object-curly-newline:
+  #  - error
+  #  - multiline: true
   # siehe @typescript-eslint/object-curly-spacing
   object-curly-spacing: 0
   object-property-newline:

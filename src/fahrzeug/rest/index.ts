@@ -58,7 +58,7 @@ export const find = (req: Request, res: Response) => handler.find(req, res);
  * dass damit das neu angelegte Fahrzeug abgerufen werden kann.
  *
  * Falls Constraints verletzt sind, wird der Statuscode `400` (`Bad Request`)
- * gesetzt und genauso auch wenn das Modell oder die Fahrgestellnummer bereits
+ * gesetzt und genauso auch wenn der Titel oder die ISBN-Nummer bereits
  * existieren.
  *
  * @param req Request-Objekt von Express.
@@ -83,8 +83,8 @@ export const create = (req: Request, res: Response) => handler.create(req, res);
  * Falls die Versionsnummer fehlt, wird der Statuscode `428` (`Precondition
  * required`) gesetzt; und falls sie nicht korrekt ist, der Statuscode `412`
  * (`Precondition failed`). Falls Constraints verletzt sind, wird der
- * Statuscode `400` (`Bad Request`) gesetzt und genauso auch wenn das neue
- * Modell oder die neue Fahrgestellnummer bereits existieren.
+ * Statuscode `400` (`Bad Request`) gesetzt und genauso auch wenn der neue
+ * Titel oder die neue ISBN-Nummer bereits existieren.
  *
  * @param req Request-Objekt von Express.
  * @param res Leeres Response-Objekt von Express.

@@ -50,7 +50,10 @@ export class FahrgestellnummerExists extends FahrzeugServiceError {
 /**
  * Union-Type für Fehler beim Neuanlegen eines Fahrzeuges.
  */
-export type CreateError = FahrzeugInvalid | FahrgestellnummerExists | ModellExists;
+export type CreateError =
+    | FahrgestellnummerExists
+    | FahrzeugInvalid
+    | ModellExists;
 
 /**
  * Klasse für eine ungültige Versionsnummer beim Ändern.

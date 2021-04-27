@@ -3,10 +3,11 @@
  * @packageDocumentation
  */
 
-import type { Fahrzeug, FahrzeugArt, Hersteller } from './fahrzeug';
 import { Document, Schema, SchemaType, model } from 'mongoose';
+import type { Fahrzeug, FahrzeugArt, Hersteller } from './fahrzeug';
 import { autoIndex, logColorConsole } from '../../shared';
 import type { Model } from 'mongoose';
+
 // RFC version 1: timestamps            https://github.com/uuidjs/uuid#uuidv1options-buffer-offset
 // RFC version 3: namespace mit MD5     https://github.com/uuidjs/uuid#uuidv3name-namespace-buffer-offset
 // RFC version 4: random                https://github.com/uuidjs/uuid#uuidv4options-buffer-offset
@@ -26,7 +27,7 @@ if (logColorConsole) {
  */
 export class FahrzeugDocument extends Document<string> implements Fahrzeug {
     readonly modell: string | null | undefined;
-    
+
     readonly tueren: number | null | undefined;
 
     readonly art: FahrzeugArt | '' | null | undefined;
@@ -63,7 +64,10 @@ export class FahrzeugDocument extends Document<string> implements Fahrzeug {
  * Das Schema für Mongoose, das dem Schema bei einem relationalen DB-System
  * entspricht, welches durch `CREATE TABLE`, `CREATE INDEX` usw. entsteht.
  */
-export const fahrzeugSchema = new Schema<FahrzeugDocument, Model<FahrzeugDocument>>(
+export const fahrzeugSchema = new Schema<
+    FahrzeugDocument,
+    Model<FahrzeugDocument>
+>(
     {
         // MongoDB erstellt implizit einen Index fuer _id
         // mongoose-id-assigner hat geringe Download-Zahlen und
@@ -71,11 +75,14 @@ export const fahrzeugSchema = new Schema<FahrzeugDocument, Model<FahrzeugDocumen
         _id: { type: String, default: uuid },
         modell: { type: String, required: true, unique: true },
         tueren: { type: Number, min: 0, max: 5 },
-        art: { type: String, enum: ['Coupe', 'Cabrio', 'Limousine', 'Kombi', 'SUV'] },
+        art: {
+            type: String,
+            enum: ['Coupe', 'Cabrio', 'Limousine', 'Kombi', 'SUV'],
+        },
         hersteller: {
             type: String,
             required: true,
-            enum: [ 'BMW', 'Audi', 'MercedesBenz', 'Volkswagen', 'Porsche'],
+            enum: ['BMW', 'Audi', 'MercedesBenz', 'Volkswagen', 'Porsche'],
             // es gibt auch
             //  lowercase: true
             //  uppercase: true
@@ -84,7 +91,12 @@ export const fahrzeugSchema = new Schema<FahrzeugDocument, Model<FahrzeugDocumen
         rabatt: Number,
         lieferbar: Boolean,
         datum: Date,
-        fahrgestellnummer: { type: String, required: true, unique: true, immutable: true },
+        fahrgestellnummer: {
+            type: String,
+            required: true,
+            unique: true,
+            immutable: true,
+        },
         angebot: String,
         sonderausstattung: { type: [String], sparse: true },
     },
@@ -103,7 +115,9 @@ export const fahrzeugSchema = new Schema<FahrzeugDocument, Model<FahrzeugDocumen
 // Optimistische Synchronisation durch das Feld __v fuer die Versionsnummer
 // https://mongoosejs.com/docs/guide.html#versionKey
 // https://github.com/Automattic/mongoose/issues/1265
-const optimistic = (schema: Schema<FahrzeugDocument, Model<FahrzeugDocument>>) => {
+const optimistic = (
+    schema: Schema<FahrzeugDocument, Model<FahrzeugDocument>>,
+) => {
     schema.pre('findOneAndUpdate', function () {
         // UpdateQuery ist abgeleitet von ReadonlyPartial<Schema<...>>
         const update = this.getUpdate(); // eslint-disable-line @typescript-eslint/no-invalid-this
@@ -143,4 +157,7 @@ fahrzeugSchema.plugin(optimistic);
  * die Dokumente bereit, d.h. das Pattern _Active Record_ wird realisiert.
  * Der Name des Models wird als Name für die Collection in MongoDB verwendet.
  */
-export const FahrzeugModel = model<FahrzeugDocument>('Fahrzeug', fahrzeugSchema); // eslint-disable-line @typescript-eslint/naming-convention
+export const fahrzeugModel = model<FahrzeugDocument>(
+    'Fahrzeug',
+    fahrzeugSchema,
+);

@@ -1,0 +1,33 @@
+:revealjsdir: ../../node_modules/reveal.js
+:revealjs_slideNumber: true
+:sectnums:
+
+// https://asciidoctor.org/docs/asciidoctor-revealjs
+
+= Abgabe Fahrzeug
+
+== Gliederung
+
+* Projektmitglieder
+* Projektplanung
+* Entwicklungsumgebung
+* Abgabetermin
+
+== Projektmitglieder
+
+* Vitali Reinhardt <revi1013@hs-karlsruhe.de>
+* Valentin Gant <gava1012@hs-karlsruhe.de>
+* Baran Özalp <oeba1011@hs-karlsruhe.de>
+* Jannik Tschepke <tsja1011@hs-karlsruhe.de>
+
+== Projektplanung
+
+* Project Professional
+
+== Entwicklungsumgebung
+
+* Visual Studio Code
+
+== Abgabetermin
+
+* 29.04.2021

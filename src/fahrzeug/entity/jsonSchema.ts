@@ -57,17 +57,18 @@ export const jsonSchema: GenericJsonSchema = {
             items: { type: 'string' },
         },
     },
-    // Fahrgestellnummer ist NUR beim Neuanlegen ein Pflichtfeld
+    // isbn ist NUR beim Neuanlegen ein Pflichtfeld
     // Mongoose bietet dazu die Funktion MyModel.findByIdAndUpdate()
     required: ['modell', 'art', 'hersteller'],
     errorMessage: {
         properties: {
             modell:
                 'Ein Fahrzeugmodell muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
-            tueren: 'Die Anzahl der Türen muss zwischen 0 und 5 liegen.',
-            art: 'Die Fahrzeugart muss Coupe, Kombi, Cabrio, SUV oder Limousine sein.',
+            tueren: 'Die Anzahl der Tueren muss zwischen 0 und 5 liegen.',
+            art:
+                'Die Fahrzeugart muss Coupe, Kombi, Cabrio, SUV oder Limousine sein.',
             hersteller:
-                'Der Hersteller eines Fahrzeugs muss BMW, Audi, MercedesBenz, Volkswagen oder Porsche sein.',
+                'Der Hersteller eines Fahrzeuges muss BMW, Audi, Mercedes-Benz, Volkswagen oder Porsche sein.',
             preis: 'Der Preis darf nicht negativ sein.',
             rabatt: 'Der Rabatt muss ein Wert zwischen 0 und 1 sein.',
             lieferbar: '"lieferbar" muss auf true oder false gesetzt sein.',

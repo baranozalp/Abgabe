@@ -1,0 +1,69 @@
+= Entwicklerhandbuch
+Baran Özalp <oeba1011@hs-karlsruhe.de>
+:doctype: book
+:toc: left
+:sectanchors:
+:sectlinks:
+:sectnums:
+:source-highlighter: coderay
+:icons: font
+
+== Der Applikationsserver
+
+=== Der Applikationsserver im Überblick
+
+bla bla
+
+.Use Cases
+[plantuml,use-cases,svg]
+----
+include::use-cases.puml[]
+----
+
+bla bla
+
+.Komponentendiagramm
+[plantuml,komponenten,svg]
+----
+include::komponenten.puml[]
+----
+
+=== Die REST-Schnittstelle
+
+bla bla
+
+.Handler für die REST-Schnittstelle
+[plantuml, FahrzeugHandler,svg]
+----
+include::FahrzeugHandler.puml[]
+----
+
+=== Der Anwendungskern
+
+bla bla
+
+.Anwendungskern mit Mongoose
+[plantuml, FahrzeugService,svg]
+----
+include::FahrzeugService.puml[]
+----
+
+=== Interface für Entities und das Mongoose-Model
+
+bla bla
+
+.Entity, Model und Schema
+[plantuml,Fahrzeug,svg]
+----
+include::Fahrzeug.puml[]
+----
+
+== Programmierrichtlinien für TypeScript und JavaScript
+
+Für die Programmierung mit *TypeScript* und *JavaScript* wird folgende
+Styleguides empfehlenswert:
+
+[horizontal]
+_Microsoft_:: https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines
+_Angular_:: https://angular.io/docs/ts/latest/guide/style-guide.html
+_React_:: https://github.com/airbnb/javascript/tree/master/react

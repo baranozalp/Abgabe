@@ -50,7 +50,9 @@ class SharedRequestHandler {
     // eslint-disable-next-line max-params
     validateUUID(_: Request, res: Response, next: NextFunction, id: unknown) {
         if (typeof id !== 'string') {
-            res.status(HttpStatus.BAD_REQUEST).send('Keine gueltige Fahrzeug-ID');
+            res.status(HttpStatus.BAD_REQUEST).send(
+                'Keine gueltige Fahrzeug-ID',
+            );
         }
         const idStr = id as string;
         if (validator.isUUID(idStr)) {

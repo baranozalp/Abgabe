@@ -5,6 +5,10 @@
  */
 
 export { Fahrzeug, FahrzeugArt, FahrzeugData, Hersteller } from './fahrzeug';
-export { FahrzeugDocument, FahrzeugModel, fahrzeugSchema } from './fahrzeug.model';
+export {
+    FahrzeugDocument,
+    fahrzeugModel as FahrzeugModel,
+    fahrzeugSchema,
+} from './fahrzeug.model';
 export { MAX_TUEREN } from './jsonSchema';
 export { ValidationErrorMsg, validateFahrzeug } from './validateFahrzeug';

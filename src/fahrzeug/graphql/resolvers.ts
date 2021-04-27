@@ -74,7 +74,10 @@ const logUpdateResult = (
         | number,
 ) => {
     if (result instanceof FahrzeugInvalid) {
-        logger.debug('resolvers updateFahrzeug(): validation msg = %o', result.msg);
+        logger.debug(
+            'resolvers updateFahrzeug(): validation msg = %o',
+            result.msg,
+        );
     } else if (result instanceof ModellExists) {
         logger.debug(
             'resolvers updateFahrzeug(): vorhandener modell = %s',
@@ -129,7 +132,8 @@ const query = {
      * @param __namedParameters JSON-Objekt mit `modell` als Suchkriterium
      * @returns Promise mit einem JSON-Array der gefundenen Fahrzeuge
      */
-     fahrzeuge: (_: unknown, { modell }: ModellCriteria) => findFahrzeuge(modell),
+    fahrzeuge: (_: unknown, { modell }: ModellCriteria) =>
+        findFahrzeuge(modell),
 
     /**
      * Fahrzeug suchen
@@ -137,7 +141,7 @@ const query = {
      * @param __namedParameters JSON-Objekt mit `id` als Suchkriterium
      * @returns Promise mit dem gefundenen {@linkcode Fahrzeug} oder `undefined`
      */
-     fahrzeug: (_: unknown, { id }: IdCriteria) => findFahrzeugById(id),
+    fahrzeug: (_: unknown, { id }: IdCriteria) => findFahrzeugById(id),
 };
 
 const mutation = {
@@ -147,7 +151,8 @@ const mutation = {
      * @param fahrzeug JSON-Objekt mit dem neuen {@linkcode Fahrzeug}
      * @returns Promise mit der generierten ID
      */
-    createFahrzeug: (_: unknown, fahrzeug: Fahrzeug) => createFahrzeug(fahrzeug),
+    createFahrzeug: (_: unknown, fahrzeug: Fahrzeug) =>
+        createFahrzeug(fahrzeug),
 
     /**
      * Vorhandenes {@linkcode Fahrzeug} aktualisieren
@@ -162,7 +167,8 @@ const mutation = {
      * - {@linkcode VersionInvalid}
      * - {@linkcode VersionOutdated}
      */
-    updateFahrzeug: (_: unknown, fahrzeug: Fahrzeug) => updateFahrzeug(fahrzeug),
+    updateFahrzeug: (_: unknown, fahrzeug: Fahrzeug) =>
+        updateFahrzeug(fahrzeug),
 
     /**
      * Fahrzeug löschen
