@@ -1,0 +1,13 @@
+{
+  "modell": "Golf",
+  "tueren": 3,
+  "art": "Nutzfahrzeug",
+  "hersteller": "Volkswagen",
+  "preis": 4,
+  "rabatt": 120,
+  "lieferbar": true,
+  "datum": "2020-03-20",
+  "fahrgestellnummer": "12345678",
+  "angebot": "https://test.de/",
+  "sonderausstattung": ["Schiebedach"]
+}

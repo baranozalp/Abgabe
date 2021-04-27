@@ -79,7 +79,7 @@ export class FahrzeugService {
 
         // alle Fahrzeuge asynchron suchen u. aufsteigend nach modell sortieren
         // https://docs.mongodb.org/manual/reference/object-id
-        // entries(): { modell: 'a', türen: 5 } => [{ modell: 'x'}, {türen: 5}]
+        // entries(): { modell: 'a', tueren: 5 } => [{ modell: 'x'}, {tueren: 5}]
         if (query === undefined || Object.entries(query).length === 0) {
             logger.debug('FahrzeugService.find(): alle Fahrzeuge');
             // lean() liefert ein "Plain JavaScript Object" statt ein Mongoose Document
@@ -92,7 +92,7 @@ export class FahrzeugService {
             return fahrzeuge;
         }
 
-        // { modell: 'a', türen: 5, javascript: true }
+        // { modell: 'a', tueren: 5, javascript: true }
         // Rest Properties
         const { modell, javascript, typescript, ...dbQuery } = query;
 

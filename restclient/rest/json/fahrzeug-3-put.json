@@ -1,0 +1,13 @@
+{
+  "modell": "C63 AMG",
+  "tueren": 4,
+  "art": "Limousine",
+  "hersteller": "MercedesBenz",
+  "preis": 9999,
+  "rabatt": 0.02,
+  "lieferbar": true,
+  "datum": "2020-02-01",
+  "fahrgestellnummer": "0-0070-9732-8",
+  "angebot": "https://test.de/",
+  "sonderausstattung": ["Schiebedach"] 
+}

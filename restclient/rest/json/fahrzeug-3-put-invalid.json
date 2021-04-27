@@ -1,0 +1,14 @@
+{
+  "_id": "00000000-0000-0000-0000-000000000003",
+  "modell": "C43 AMG",
+  "tueren": 5,
+  "art": "Coupe",
+  "hersteller": "Peugeot",
+  "preis": 99999,
+  "rabatt": 0.02,
+  "lieferbar": true,
+  "datum": "12345-123-123",
+  "fahrgestellnummer": "978-02016336112",
+  "angebot": "anyAngebot",
+  "sonderausstattung": ["Schiebedach"]
+}

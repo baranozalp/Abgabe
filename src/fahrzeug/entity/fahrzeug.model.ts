@@ -27,7 +27,7 @@ if (logColorConsole) {
 export class FahrzeugDocument extends Document<string> implements Fahrzeug {
     readonly modell: string | null | undefined;
     
-    readonly türen: number | null | undefined;
+    readonly tueren: number | null | undefined;
 
     readonly art: FahrzeugArt | '' | null | undefined;
 
@@ -70,7 +70,7 @@ export const fahrzeugSchema = new Schema<FahrzeugDocument, Model<FahrzeugDocumen
         // uuid-mongodb hat keine Typ-Definitionen fuer TypeScript
         _id: { type: String, default: uuid },
         modell: { type: String, required: true, unique: true },
-        türen: { type: Number, min: 0, max: 5 },
+        tueren: { type: Number, min: 0, max: 5 },
         art: { type: String, enum: ['Coupe', 'Cabrio', 'Limousine', 'Kombi', 'SUV'] },
         hersteller: {
             type: String,

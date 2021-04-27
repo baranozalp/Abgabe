@@ -1,10 +1,10 @@
 import type { GenericJsonSchema } from './GenericJsonSchema';
 
-export const MAX_TÜREN = 5;
+export const MAX_TUEREN = 5;
 
 export const jsonSchema: GenericJsonSchema = {
     $schema: 'https://json-schema.org/draft/2019-09/schema',
-    $id: 'http://acme.com/buch.json#',
+    $id: 'http://acme.com/fahrzeug.json#',
     title: 'Fahrzeug',
     description: 'Eigenschaften eines Fahrzeugs: Typen und Einschraenkungen',
     type: 'object',
@@ -24,10 +24,10 @@ export const jsonSchema: GenericJsonSchema = {
             type: 'string',
             pattern: '^\\w.*',
         },
-        türen: {
+        tueren: {
             type: 'number',
             minimum: 0,
-            maximum: MAX_TÜREN,
+            maximum: MAX_TUEREN,
         },
         art: {
             type: 'string',
@@ -49,16 +49,7 @@ export const jsonSchema: GenericJsonSchema = {
         lieferbar: { type: 'boolean' },
         // https://github.com/ajv-validator/ajv-formats
         datum: { type: 'string', format: 'date' },
-        fahrgestellnummer: {
-            type: 'string',
-            // https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s13.html
-            // TODO https://github.com/ajv-validator/ajv-formats/issues/14
-            pattern:
-                '^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|' +
-                '(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|' +
-                '(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?' +
-                '[0-9]+[- ]?[0-9]+[- ]?[0-9X]*',
-        },
+        fahrgestellnummer: { type: 'string' },
         // https://github.com/ajv-validator/ajv-formats
         angebot: { type: 'string', format: 'uri' },
         sonderausstattung: {
@@ -66,14 +57,14 @@ export const jsonSchema: GenericJsonSchema = {
             items: { type: 'string' },
         },
     },
-    // isbn ist NUR beim Neuanlegen ein Pflichtfeld
+    // Fahrgestellnummer ist NUR beim Neuanlegen ein Pflichtfeld
     // Mongoose bietet dazu die Funktion MyModel.findByIdAndUpdate()
     required: ['modell', 'art', 'hersteller'],
     errorMessage: {
         properties: {
             modell:
                 'Ein Fahrzeugmodell muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
-            türen: 'Die Anzahl der Türen muss zwischen 0 und 5 liegen.',
+            tueren: 'Die Anzahl der Türen muss zwischen 0 und 5 liegen.',
             art: 'Die Fahrzeugart muss Coupe, Kombi, Cabrio, SUV oder Limousine sein.',
             hersteller:
                 'Der Hersteller eines Fahrzeugs muss BMW, Audi, Mercedes-Benz, Volkswagen oder Porsche sein.',

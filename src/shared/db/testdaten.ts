@@ -15,7 +15,7 @@
      {
          _id: '00000000-0000-0000-0000-000000000001',
          modell: 'C63 AMG',
-         türen: 2,
+         tueren: 2,
          art: 'Coupe',
          hersteller: 'Mercedes-Benz',
          preis: 93000.00,
@@ -33,7 +33,7 @@
      {
          _id: '00000000-0000-0000-0000-000000000002',
          modell: 'RS6',
-         türen: 4,
+         tueren: 4,
          art: 'Kombi',
          hersteller: 'Audi',
          preis: 120000.00,
@@ -50,7 +50,7 @@
      {
          _id: '00000000-0000-0000-0000-000000000003',
          modell: 'S500',
-         türen: 5,
+         tueren: 5,
          art: 'Limousine',
          hersteller: 'Mercedes-Benz',
          preis: 140000.00,
@@ -67,7 +67,7 @@
      {
          _id: '00000000-0000-0000-0000-000000000004',
          modell: '750d',
-         türen: 5,
+         tueren: 5,
          art: 'Limousine',
          hersteller: 'BMW',
          preis: 160000.00,
@@ -84,7 +84,7 @@
      {
          _id: '00000000-0000-0000-0000-000000000005',
          modell: 'Passat',
-         türen: 5,
+         tueren: 5,
          art: 'Kombi',
          hersteller: 'Volkswagen',
          preis: 6000.00,

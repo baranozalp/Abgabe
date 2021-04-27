@@ -1,0 +1,56 @@
+###
+### N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
+###
+
+@host = localhost:3000/api/fahrzeuge
+#@host = gener-iert-12345.herokuapp.com/api/fahrzeuge
+
+### Suche alle Fahrzeuge
+https://{{host}}
+
+### Suche mit vorhandener Fahrzeug-ID
+https://{{host}}/00000000-0000-0000-0000-000000000001
+
+### Suche mit vorhandener Fahrzeug-ID und Versionsnummer
+https://{{host}}/00000000-0000-0000-0000-000000000001
+If-None-Match: "0"
+
+### Suche mit vorhandener Fahrzeug-ID und falscher Versionsnummer
+https://{{host}}/00000000-0000-0000-0000-000000000001
+If-None-Match: 0
+
+### Suche mit ungueltiger Fahrzeug-ID
+https://{{host}}/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
+
+### Suche mit nicht-vorhandener Fahrzeug-ID
+https://{{host}}/99999999-9999-9999-9999-999999999999
+
+### Suche mit vorhandenem Modell
+https://{{host}}?modell=S500
+
+### Suche mit nicht-vorhandenem Modell
+https://{{host}}?modell=xxx
+
+### Suche mit vorhandener Fahrgestellnummer
+https://{{host}}?fahrgestellnummer=978-3827315526
+
+### Suche mit vorhandener Sonderausstattung
+https://{{host}}?schiebedach=true&AMG-Line=true
+
+### Suche mit vorhandenem Sonderausstattung "Sitzheizung"
+https://{{host}}?schiebedach=true
+
+### Suche mit vorhandenem Sonderausstattung "Schiebedach"
+https://{{host}}?sitzheizung=true
+
+### Suche mit gueltiger Fahrzeugart
+https://{{host}}?art=Coupe
+
+### Suche mit gueltiger Türenanzahl
+https://{{host}}?tueren=2
+
+### Suche lieferbare Fahrzeuge
+https://{{host}}?lieferbar=true
+
+### Optionen zu Fahrzeug-ID
+OPTIONS https://{{host}}/00000000-0000-0000-0000-000000000001

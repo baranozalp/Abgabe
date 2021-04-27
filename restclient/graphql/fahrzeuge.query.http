@@ -1,0 +1,60 @@
+###
+### N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
+###
+
+@url = https://localhost:3000/graphql
+#@url = https://gener-iert-12345.herokuapp.com/graphql
+
+### Suche id, modell, art und version von allen Fahrzeugen
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  fahrzeuge {
+    id
+    modell
+    art
+    version
+  }
+}
+
+### Suche modell, art, fahrgestellnummer und version von einem Fahrzeug mit vorhandener Fahrzeug-ID
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  fahrzeug(id: "00000000-0000-0000-0000-000000000001") {
+    modell
+    art
+    fahrgestellnummer
+    version
+  }
+}
+
+### Suche modell und art von Fahrzeugen mit vorhandenem Modell
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  fahrzeuge(modell: "C63 AMG") {
+    modell
+    art
+  }
+}
+
+
+### Suche modell, art und sonderausstattung von Fahrzeugen mit vorhandenem Modell
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  fahrzeuge(modell: "S500") {
+    modell
+    art
+    sonderausstattung
+  }
+}

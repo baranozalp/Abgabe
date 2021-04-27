@@ -1,0 +1,59 @@
+###
+### N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
+###
+
+#@url = https://localhost:3000/graphql
+@url = https://pure-falls-97676.herokuapp.com/graphql
+
+### Neues Fahrzeug anlegen
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  createFahrzeug(
+    modell: "R8",
+    tueren: 2,
+    art: "Cabrio",
+    hersteller: "Audi",
+    preis: 210000.00,
+    rabatt: 0.02,
+    lieferbar: true,
+    datum: "2021-02-15",
+    fahrgestellnummer: "3-22722-583-2",
+    angebot: "https://acmfe.at/",
+    sonderausstattung: ["Sportfahrwerk"],
+  )
+}
+
+### Vorhandenes Fahrzeug aktualisieren
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  updateFahrzeug(
+    _id: "00000000-0000-0000-0000-000000000002",
+    modell: "RS7",
+    tueren: 4,
+    art: "Limousine",
+    hersteller: "Audi",
+    preis: 120000.00,
+    rabatt: 0.11,
+    lieferbar: true,
+    datum: "2020-02-02",
+    fahrgestellnummer: "978-3827315526",
+    angebot: "https://acme.biz/",
+    sonderausstattung: ["Sitzheizung"],
+    version: 1
+  )
+}
+
+### Vorhandenes Fahrzeug loeschen
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  deleteFahrzeug(id: "00000000-0000-0000-0000-000000000004")
+}

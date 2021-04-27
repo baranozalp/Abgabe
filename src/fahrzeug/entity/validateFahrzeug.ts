@@ -17,7 +17,7 @@ import { logger } from '../../shared';
 /**
  * Konstante für den maximalen Wert bei den Bewertungen
  */
-export const MAX_RATING = 5;
+export const MAX_TUEREN = 5;
 
 const ajv = new Ajv({
     allowUnionTypes: true,

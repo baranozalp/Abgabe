@@ -30,7 +30,7 @@ export interface Fahrzeug {
     __v?: number; // eslint-disable-line @typescript-eslint/naming-convention
 
     readonly modell: string | null | undefined;
-    readonly türen: number | null | undefined;
+    readonly tueren: number | null | undefined;
     readonly art: FahrzeugArt | '' | null | undefined;
     readonly hersteller: Hersteller | '' | null | undefined;
     readonly preis: number | undefined;

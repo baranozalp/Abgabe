@@ -47,7 +47,7 @@ package fahrzeug.entity {
         + createdAt?: number
         + updatedAt?: number
         + modell: string
-        + türen?: number
+        + tueren?: number
         + art?: FahrzeugArt
         + hersteller: Hersteller
         + preis: number

@@ -1,0 +1,60 @@
+###
+### N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
+###
+
+@url = https://localhost:3000/graphql
+#@url = https://gener-iert-12345.herokuapp.com/graphql
+
+# Introspection beim Apollo Server: Metadaten ueber die verfuegbaren Typen
+# https://graphql.org/learn/introspection
+
+### Welche Typen sind verfuegbar?
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  __schema {
+    types {
+      name
+    }
+  }
+}
+
+### Details zum Typ "Fahrzeug": Felder und deren Typen
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  __type(name: "Fahrzeug") {
+    name
+    kind
+    description
+    fields {
+      name
+      type {
+        name
+        kind
+        ofType {
+          name
+          kind
+          description
+        }
+      }
+    }
+  }
+}
+
+### Details zum Enum-Typ "Art"
+POST {{url}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+{
+  __type(name: "Art") {
+    name
+    kind
+    description
+  }
+}

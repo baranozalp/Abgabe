@@ -51,7 +51,7 @@ export const typeDefs = gql`
         id: ID!
         version: Int
         modell: String!
-        türen: Int
+        tueren: Int
         art: Art
         hersteller: Hersteller!
         preis: Float
@@ -73,7 +73,7 @@ export const typeDefs = gql`
     type Mutation {
         createFahrzeug(
             modell: String!
-            türen: Int
+            tueren: Int
             art: String
             hersteller: String!
             preis: Float
@@ -87,7 +87,7 @@ export const typeDefs = gql`
         updateFahrzeug(
             _id: ID
             modell: String!
-            türen: Int
+            tueren: Int
             art: String
             hersteller: String!
             preis: Float
