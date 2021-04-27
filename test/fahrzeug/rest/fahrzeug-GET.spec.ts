@@ -83,7 +83,7 @@ describe('GET /api/fahrzeuge', () => {
             const body = await response.json();
             expect(body).not.to.be.empty;
 
-            // Jedes Fahrzeug hat einen Titel mit dem Teilstring 'a'
+            // Jedes Fahrzeug hat ein Modell mit dem Teilstring 'a'
             body.map(
                 (fahrzeug: Fahrzeug) => fahrzeug.modell,
             ).forEach((modell: string) =>

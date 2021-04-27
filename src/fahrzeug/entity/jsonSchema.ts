@@ -35,7 +35,7 @@ export const jsonSchema: GenericJsonSchema = {
         },
         hersteller: {
             type: 'string',
-            enum: ['BMW', 'Audi', 'Mercedes-Benz', 'Volkswagen', 'Porsche', ''],
+            enum: ['BMW', 'Audi', 'MercedesBenz', 'Volkswagen', 'Porsche', ''],
         },
         preis: {
             type: 'number',
@@ -67,7 +67,7 @@ export const jsonSchema: GenericJsonSchema = {
             tueren: 'Die Anzahl der Türen muss zwischen 0 und 5 liegen.',
             art: 'Die Fahrzeugart muss Coupe, Kombi, Cabrio, SUV oder Limousine sein.',
             hersteller:
-                'Der Hersteller eines Fahrzeugs muss BMW, Audi, Mercedes-Benz, Volkswagen oder Porsche sein.',
+                'Der Hersteller eines Fahrzeugs muss BMW, Audi, MercedesBenz, Volkswagen oder Porsche sein.',
             preis: 'Der Preis darf nicht negativ sein.',
             rabatt: 'Der Rabatt muss ein Wert zwischen 0 und 1 sein.',
             lieferbar: '"lieferbar" muss auf true oder false gesetzt sein.',

@@ -41,7 +41,7 @@ export const typeDefs = gql`
     enum Hersteller {
         BMW
         Audi
-        Mercedes-Benz
+        MercedesBenz
         Volkswagen
         Porsche
     }

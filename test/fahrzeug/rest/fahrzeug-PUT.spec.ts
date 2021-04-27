@@ -67,7 +67,7 @@ const geaendertesFahrzeugInvalid: object = {
 };
 
 const veraltesFahrzeug: object = {
-    // isbn wird nicht geaendet
+    // Fahrgestellnummer wird nicht geaendet
     modell: 'veraltet',
     tueren: 1,
     art: 'Limousine',
@@ -193,7 +193,7 @@ describe('PUT /api/fahrzeuge/:id', () => {
             `Die Anzahl der Tueren muss zwischen 0 und 5 liegen.`,
         );
         expect(hersteller).to.be.equal(
-            'Der Hersteller eines Fahrzeuges muss BMW, Audi, Mercedes-Benz, Volkswagen oder Porsche sein.',
+            'Der Hersteller eines Fahrzeuges muss BMW, Audi, MercedesBenz, Volkswagen oder Porsche sein.',
         );
         expect(datum).to.be.equal('Das Datum muss im Format yyyy-MM-dd sein.');
         expect(fahrgestellnummer).to.be.equal(

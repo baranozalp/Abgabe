@@ -75,7 +75,7 @@ export const fahrzeugSchema = new Schema<FahrzeugDocument, Model<FahrzeugDocumen
         hersteller: {
             type: String,
             required: true,
-            enum: [ 'BMW', 'Audi', 'Mercedes-Benz', 'Volkswagen', 'Porsche'],
+            enum: [ 'BMW', 'Audi', 'MercedesBenz', 'Volkswagen', 'Porsche'],
             // es gibt auch
             //  lowercase: true
             //  uppercase: true

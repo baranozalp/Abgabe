@@ -17,11 +17,11 @@
 
 import { exec } from 'shelljs';
 
-const dockerAccount = 'juergenzimmermann';
+//const dockerAccount = 'juergenzimmermann';
 const imageName = 'fahrzeug';
 const imageTag = '1.0.0';
 
-const image = `docker.io/${dockerAccount}/${imageName}:${imageTag}`;
+const image = `docker.io/${imageName}:${imageTag}`;
 
 // Dockerfile im aktuellen Verzeichnis
 // Download der diversen Layer fuer node:x.y.z-buster und distroless/nodejs

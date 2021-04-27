@@ -9,7 +9,7 @@
 /**
  * Alias-Typ für gültige Strings bei Herstellern.
  */
-export type Hersteller = 'BMW' | 'Audi' | 'Mercedes-Benz' | 'Volkswagen' | 'Porsche';
+export type Hersteller = 'BMW' | 'Audi' | 'MercedesBenz' | 'Volkswagen' | 'Porsche';
 
 /**
  * Alias-Typ für gültige Strings bei der Fahrzeugart.
