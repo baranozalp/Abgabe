@@ -162,7 +162,7 @@ const mutation = {
      * - {@linkcode VersionInvalid}
      * - {@linkcode VersionOutdated}
      */
-    updateFahrzeugFahrzeug: (_: unknown, fahrzeug: Fahrzeug) => updateFahrzeug(fahrzeug),
+    updateFahrzeug: (_: unknown, fahrzeug: Fahrzeug) => updateFahrzeug(fahrzeug),
 
     /**
      * Fahrzeug löschen
