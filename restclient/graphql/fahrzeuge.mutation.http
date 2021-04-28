@@ -12,7 +12,7 @@ X-REQUEST-TYPE: GraphQL
 
 mutation {
   createFahrzeug(
-    modell: "R",
+    modell: "vitali",
     tueren: 2,
     art: "Cabrio",
     hersteller: "Audi",
@@ -20,7 +20,7 @@ mutation {
     rabatt: 0.02,
     lieferbar: true,
     datum: "2021-02-15",
-    fahrgestellnummer: "3-22133222-583-2",
+    fahrgestellnummer: "4-22133222-583-2",
     angebot: "https://acmfe.at/",
     sonderausstattung: ["Sportfahrwerk"],
   )
