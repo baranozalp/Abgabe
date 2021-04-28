@@ -33,7 +33,7 @@
     "open:heroku": "heroku open --app brutale-blechbuechsen",
     "open:heroku:file": "heroku open --app brutale-blechbuechsen /api/fahrzeuge/00000000-0000-0000-0000-000000000001/file",
     "open:heroku:html": "heroku open --app brutale-blechbuechsen /html/suche",
-    "open:heroku:playground": "heroku open --app brutale-blechbuechsen /api",
+    "open:heroku:playground": "heroku open --app brutale-blechbuechsen /graphql",
     "port-forward": "ts-node scripts/port-forward",
     "prettier": "prettier --write src/**/*.ts scripts/*.?s test/**/*.ts",
     "revealjs": "asciidoctor-revealjs doc/folien/folien.adoc",

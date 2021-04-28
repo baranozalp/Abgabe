@@ -150,12 +150,7 @@ describe('POST /api/fahrzeuge', () => {
 
         // then
         expect(response.status).to.be.equal(HttpStatus.BAD_REQUEST);
-        const {
-            art,
-            tueren,
-            hersteller,
-            datum,
-        } = await response.json();
+        const { art, tueren, hersteller, datum } = await response.json();
 
         expect(art).to.be.equal(
             'Die Fahrzeugart muss Coupe, Kombi, Cabrio, SUV oder Limousine sein.',
