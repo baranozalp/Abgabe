@@ -68,12 +68,11 @@ export const jsonSchema: GenericJsonSchema = {
             art:
                 'Die Fahrzeugart muss Coupe, Kombi, Cabrio, SUV oder Limousine sein.',
             hersteller:
-                'Der Hersteller eines Fahrzeuges muss BMW, Audi, Mercedes-Benz, Volkswagen oder Porsche sein.',
+                'Der Hersteller eines Fahrzeuges muss BMW, Audi, MercedesBenz, Volkswagen oder Porsche sein.',
             preis: 'Der Preis darf nicht negativ sein.',
             rabatt: 'Der Rabatt muss ein Wert zwischen 0 und 1 sein.',
             lieferbar: '"lieferbar" muss auf true oder false gesetzt sein.',
             datum: 'Das Datum muss im Format yyyy-MM-dd sein.',
-            fahrgestellnummer: 'Die Fahrgestellnummer ist nicht korrekt.',
             angebot: 'Die URL des Angebots ist nicht korrekt.',
         },
     },

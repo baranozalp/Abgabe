@@ -184,7 +184,6 @@ describe('PUT /api/fahrzeuge/:id', () => {
             tueren,
             hersteller,
             datum,
-            fahrgestellnummer,
         } = await response.json();
         expect(art).to.be.equal(
             'Die Fahrzeugart muss Coupe, Kombi, Cabrio, SUV oder Limousine sein.',
@@ -196,9 +195,6 @@ describe('PUT /api/fahrzeuge/:id', () => {
             'Der Hersteller eines Fahrzeuges muss BMW, Audi, MercedesBenz, Volkswagen oder Porsche sein.',
         );
         expect(datum).to.be.equal('Das Datum muss im Format yyyy-MM-dd sein.');
-        expect(fahrgestellnummer).to.be.equal(
-            'Die Fahrgestellnummer ist nicht korrekt.',
-        );
     });
 
     test('Vorhandenes Fahrzeug aendern, aber ohne Versionsnummer', async () => {

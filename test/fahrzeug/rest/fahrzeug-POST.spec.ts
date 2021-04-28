@@ -155,7 +155,6 @@ describe('POST /api/fahrzeuge', () => {
             tueren,
             hersteller,
             datum,
-            fahrgestellnummer,
         } = await response.json();
 
         expect(art).to.be.equal(
@@ -165,12 +164,9 @@ describe('POST /api/fahrzeuge', () => {
             'Die Anzahl der Tueren muss zwischen 0 und 5 liegen.',
         );
         expect(hersteller).to.be.equal(
-            'Der Hersteller eines Fahrzeuges muss BMW, Audi, Mercedes-Benz, Volkswagen oder Porsche sein.',
+            'Der Hersteller eines Fahrzeuges muss BMW, Audi, MercedesBenz, Volkswagen oder Porsche sein.',
         );
         expect(datum).to.be.equal('Das Datum muss im Format yyyy-MM-dd sein.');
-        expect(fahrgestellnummer).to.be.equal(
-            'Die Fahrgestellnummer ist nicht korrekt.',
-        );
     });
 
     test('Neues Fahrzeug, aber das Modell existiert bereits', async () => {
