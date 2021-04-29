@@ -2,8 +2,8 @@
 ### N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
 ###
 
-@url = https://localhost:3000/graphql
-#@url = https://brutale-blechbuechsen.herokuapp.com/graphql
+# @url = https://localhost:3000/graphql
+@url = https://brutale-blechbuechsen.herokuapp.com/graphql
 
 # Introspection beim Apollo Server: Metadaten ueber die verfuegbaren Typen
 # https://graphql.org/learn/introspection

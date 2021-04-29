@@ -1,13 +1,13 @@
 {
-  "modell": "Golf GTD",
+  "modell": "REST",
   "tueren": 3,
   "art": "Coupe",
   "hersteller": "Volkswagen",
-  "preis": 24999,
+  "preis": 24999.4,
   "rabatt": 0.1,
   "lieferbar": true,
   "datum": "2020-03-20",
-  "fahrgestellnummer": "0-0071-0644-6",
+  "fahrgestellnummer": "222222222222",
   "angebot": "https://test.de/",
   "sonderausstattung": ["Schiebedach"]
 }
