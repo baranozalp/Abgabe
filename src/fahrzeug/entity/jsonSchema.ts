@@ -57,7 +57,7 @@ export const jsonSchema: GenericJsonSchema = {
             items: { type: 'string' },
         },
     },
-    // isbn ist NUR beim Neuanlegen ein Pflichtfeld
+    // Fahrgestellnummer ist NUR beim Neuanlegen ein Pflichtfeld
     // Mongoose bietet dazu die Funktion MyModel.findByIdAndUpdate()
     required: ['modell', 'art', 'hersteller'],
     errorMessage: {

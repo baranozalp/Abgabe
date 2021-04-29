@@ -184,7 +184,7 @@ export class FahrzeugRequestHandler {
      * dass damit das neu angelegte Fahrzeug abgerufen werden kann.
      *
      * Falls Constraints verletzt sind, wird der Statuscode `400` (`Bad Request`)
-     * gesetzt und genauso auch wenn der modell oder die ISBN-Nummer bereits
+     * gesetzt und genauso auch wenn das modell oder die Fahrgestellnummer bereits
      * existieren.
      *
      * @param req Request-Objekt von Express.
@@ -235,7 +235,7 @@ export class FahrzeugRequestHandler {
      * required`) gesetzt; und falls sie nicht korrekt ist, der Statuscode `412`
      * (`Precondition failed`). Falls Constraints verletzt sind, wird der
      * Statuscode `400` (`Bad Request`) gesetzt und genauso auch wenn der neue
-     * Modell oder die neue ISBN-Nummer bereits existieren.
+     * Modell oder die neue Fahrgestellnummer bereits existieren.
      *
      * @param req Request-Objekt von Express.
      * @param res Leeres Response-Objekt von Express.
@@ -342,7 +342,7 @@ export class FahrzeugRequestHandler {
         id: string | undefined,
         res: Response,
     ) {
-        const msg = `Die ISBN-Nummer "${fahrgestellnummer}" existiert bereits bei ${id}.`;
+        const msg = `Die Fahrgestellnummer "${fahrgestellnummer}" existiert bereits bei ${id}.`;
         logger.debug(
             'FahrzeugRequestHandler.handleFahrgestellnummerExists(): msg=%s',
             msg,
