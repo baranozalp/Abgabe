@@ -1,5 +1,9 @@
 = Entwicklerhandbuch
 Baran Özalp <oeba1011@hs-karlsruhe.de>
+Valentin Gant <gava1012@hs-karlsruhe.de>
+Vitali Reinhardt <revi1013@hs-karlsruhe.de>
+Jannik Tschepke <tsja1011@hs-karlsruhe.de>
+
 :doctype: book
 :toc: left
 :sectanchors:
@@ -12,7 +16,7 @@ Baran Özalp <oeba1011@hs-karlsruhe.de>
 
 === Der Applikationsserver im Überblick
 
-bla bla
+Unser Server implementiert eine Anwendungslogik, die get-, put-, post-requests etc. auf Fahrzeuge ermöglicht. Der AppServer wird mit GraphQL und Typescript umgesetzt, der Zugriff auf die Daten erfolgt über eine REST-Schnittstelle. Der Datenbankzugriff wird mit MongoDB ermöglicht.  Die Entities der Fahrzeuge sind jeweils eindeutig mit UUID's referenzierbar, die in unserer Anwendungslogik generiert werden.
 
 .Use Cases
 [plantuml,use-cases,svg]
@@ -20,7 +24,7 @@ bla bla
 include::use-cases.puml[]
 ----
 
-bla bla
+Unter den Use-Cases befinden sich der Gast, der die Möglichkeit hat Fahrzeuge zu suchen und die dafür nötigen Dateien herunterzuladen ,der Admin kann zusätzlich Fahrzeuge anlegen, ändern, löschen und auch Dateien hochladen.
 
 .Komponentendiagramm
 [plantuml,komponenten,svg]
@@ -30,7 +34,7 @@ include::komponenten.puml[]
 
 === Die REST-Schnittstelle
 
-bla bla
+Die REST-Schnittstelle ermöglicht die Benutzung aller 5 http-Methoden, zusätzlich ist die Option des Log-ins implementiert.
 
 .Handler für die REST-Schnittstelle
 [plantuml, FahrzeugHandler,svg]
@@ -40,7 +44,10 @@ include::FahrzeugHandler.puml[]
 
 === Der Anwendungskern
 
-bla bla
+Der Anwendungskern beinhaltet unsere Router-Klasse, die Requests an die Handler-Klasse weiterleitet.
+Der Client hat so die Möglichkeit über eine REST-Schnittstelle Requests abzusetzen.
+Übergeben werden die Requests an die entsprechende Service-Klasse.
+Ebenso ist der Zugriff auf den Mailserver und den Datenbankserver möglich.
 
 .Anwendungskern mit Mongoose
 [plantuml, FahrzeugService,svg]
@@ -50,7 +57,7 @@ include::FahrzeugService.puml[]
 
 === Interface für Entities und das Mongoose-Model
 
-bla bla
+In Entity ist unser Model und Schema für Mongoose, in der alle properties des Fahrzeugs gelistet sind. Zusätzlich enthält es das Interface für unser Fahrzeug, die FahrzeugArt und die Hersteller.
 
 .Entity, Model und Schema
 [plantuml,Fahrzeug,svg]
